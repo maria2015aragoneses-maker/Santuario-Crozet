@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Foto pendiente">
+  <rect width="400" height="400" fill="#eef2f4"/>
+  <g fill="none" stroke="#b9c2c7" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="200" cy="232" rx="62" ry="86"/>
+    <ellipse cx="200" cy="140" rx="40" ry="48"/>
+    <path d="M200 176c-16 10-24 28-24 48"/>
+    <path d="M200 176c16 10 24 28 24 48"/>
+    <path d="M138 236c-14 18-18 42-14 62"/>
+    <path d="M262 236c14 18 18 42 14 62"/>
+    <path d="M178 318l-14 18h30M222 318l14 18h-30"/>
+  </g>
+  <circle cx="186" cy="138" r="5" fill="#b9c2c7"/>
+  <circle cx="214" cy="138" r="5" fill="#b9c2c7"/>
+  <path d="M194 156h12l-6 14z" fill="#c2541f" opacity="0.5"/>
+  <text x="200" y="372" text-anchor="middle" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif"
+        font-size="20" font-weight="700" letter-spacing="2" fill="#8a949a">FOTO PENDIENTE</text>
+</svg>

@@ -1,0 +1,170 @@
+/* ==========================================================================
+   Santuario Crozet — sitio.css
+   Se carga DESPUÉS del kit (assets/system.css, ui/cards.css, motion/motion.css,
+   layout/layout.css). Aquí van solo:
+   1. la paleta y la tipografía repartidas por taste-skill (no tocar a mano),
+   2. lo poco que el kit no trae: el mapa, la ficha, los filtros y el
+      certificado.
+   Toda la web usa estos tokens; cambiar un color es cambiar una línea.
+   ========================================================================== */
+
+@import url("../assets/fonts/fonts.css");
+
+/* 1. Reparto: palette white-link-blue, type schibsted, radius soft -------- */
+:root {
+  --p-bg: #ffffff; --p-surface: #f4f4f4; --p-ink: #111111; --p-muted: #4d4d4d;
+  --p-accent: #1642cc; --p-accent-ink: #ffffff; --p-action: #1642cc; --p-action-ink: #ffffff;
+  --p-inv-bg: #111111; --p-inv-surface: #1e1e1e; --p-inv-ink: #ffffff; --p-inv-muted: #a8a8a8;
+  --p-inv-accent: #ffffff; --p-inv-accent-ink: #111111; --p-inv-action: #ffffff; --p-inv-action-ink: #111111;
+  --font-display: "Schibsted Grotesk", system-ui, sans-serif;
+  --font-text: "Schibsted Grotesk", system-ui, sans-serif;
+  --display-weight: 400;
+  --display-tracking: -0.035em;
+  --display-tracking-xl: -0.042em;
+  --ly-scale: 0.98;
+}
+
+/* Proyector: ningun texto importante baja de 14px y el que se lee no baja de 18px en escritorio.
+   Contraste: gris de apoyo #4d4d4d (7,7:1 sobre el gris de superficie) y azul #1642cc (7,8:1 sobre blanco). */
+:root { --t-label: 14px; --t-small: 15px; }
+@media (min-width: 1024px) {
+  :root { --t-body: 18px; --t-small: 16px; }
+  .tile > p, .rows p, .rows small, .rows .rows__name small, .mo-pc__step p { font-size: 18px; }
+  .field, .cuotas legend, .cuota__nota, .ficha-datos dt, .ficha-datos dd, #ayuda-nombre { font-size: 18px; }
+}
+
+/* Barra: 16px solo cuando cabe (a 1024 los enlaces chocarian con el logo) */
+@media (min-width: 1280px) { .nav__link, .nav__actions .btn { font-size: 16px; } }
+
+/* A 1024-1199 los cuatro enlaces rozaban el logo: menos relleno entre ellos */
+@media (min-width: 1024px) and (max-width: 1199px) { .nav--split .nav__links .nav__link { padding-inline: var(--s-1); } .nav--split .nav__links > .nav__item:first-child > .nav__link { padding-left: 0; } .nav--split .nav__links { gap: 0; } }
+
+/* 2. Piezas propias --------------------------------------------------------- */
+
+/* El mapa de zonas, en su marco */
+.mapa { margin: 0; border-radius: var(--r-lg); overflow: hidden; background: var(--surface); }
+.mapa > img { display: block; width: 100%; height: auto; }
+
+.rows .rows__name small { display: block; font-weight: 400; color: var(--muted); font-size: var(--t-small); margin-top: 2px; }
+
+/* Etiqueta de estado: texto, nunca solo color */
+.estado { display: inline-flex; align-items: center; gap: 6px; font-size: var(--t-label); font-weight: 500; line-height: 1; padding: 6px 10px; border-radius: 99px; background: var(--surface); color: var(--ink); white-space: nowrap; }
+.estado::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+.estado--apadrinado { color: var(--muted); }
+.estado--apadrinado::before { background: var(--muted); }
+
+.tile .tile__facts { color: var(--ink); }
+
+/* Tarjeta ya apadrinada: no es enlace y se nota */
+.tile--apadrinado .tile__media > img { filter: grayscale(.85); opacity: .7; }
+
+/* Pie: aviso legal y créditos */
+.aviso { font-size: var(--t-small); max-width: 72ch; }
+.credits summary { cursor: pointer; }
+.credits p { margin-top: var(--s-3); font-size: var(--t-small); max-width: 90ch; }
+.credits a { color: inherit; }
+
+/* Ficha: los cuatro datos de seguimiento, bajo la entradilla */
+.ficha-datos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-4) var(--s-5); margin-block: var(--s-6); }
+.ficha-datos dt { font-size: var(--t-label); font-weight: 500; color: var(--muted); }
+.ficha-datos dd { margin: 2px 0 0; font-size: var(--t-body); font-weight: 500; }
+.hero__text .ficha-datos + .btn-row { margin-top: 0; }
+.no-encontrado { margin-top: var(--s-6); }
+
+/* Formulario de apadrinamiento: campos a la izquierda, cuotas a la derecha */
+.form-apadrinar { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--s-6) 24px; align-items: start; }
+.form-apadrinar__campos { grid-column: 1 / span 6; display: grid; gap: var(--s-5); }
+.cuotas { grid-column: 8 / span 5; margin: 0; padding: 0; border: 0; display: grid; gap: var(--s-3); }
+.cuotas legend { font-size: var(--t-small); font-weight: 500; margin-bottom: var(--s-2); padding: 0; }
+.cuotas__lista { display: grid; gap: var(--s-3); }
+.cuota { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 2px var(--s-4); padding: var(--s-4) var(--s-5); border: 1px solid color-mix(in oklab, var(--ink) 15%, transparent); border-radius: var(--r-md); cursor: pointer; transition: border-color 160ms var(--ease), background-color 160ms var(--ease); }
+.cuota input { grid-row: span 2; width: 20px; height: 20px; accent-color: var(--action); margin: 0; }
+.cuota__importe { font-size: var(--t-card); font-weight: 500; }
+.cuota__nota { color: var(--muted); font-size: var(--t-small); }
+.cuota--elegida { border: 2px solid var(--action); padding: calc(var(--s-4) - 1px) calc(var(--s-5) - 1px); background: color-mix(in oklab, var(--action) 5%, var(--bg)); }
+@media (hover: hover) and (pointer: fine) { .cuota:hover { border-color: color-mix(in oklab, var(--ink) 45%, transparent); } .cuota--elegida:hover { border-color: var(--action); } }
+.cuota { transition-property: border-color, background-color, transform; }
+.cuota:active { transform: scale(.985); }
+/* foco por teclado: el aro del kit queda en el radio y la tarjeta entera toma el mismo halo que un campo */
+.cuota:has(input:focus-visible) { border-color: var(--action); box-shadow: 0 0 0 4px color-mix(in oklab, var(--action) 20%, transparent); }
+.cuota__nota { color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { .cuota { transition: none; } .cuota:active { transform: none; } }
+.form-apadrinar__enviar, .form-apadrinar .form__status { grid-column: 1 / -1; }
+.form-apadrinar .field input { width: 100%; }
+@media (max-width: 1023px) {
+  .form-apadrinar__campos, .cuotas { grid-column: 1 / -1; }
+}
+
+/* La seccion del formulario es una pantalla como las demas, pero crece si el contenido
+   (el certificado, o el formulario en una ventana baja) no cabe: nunca invade el pie. */
+main > section#apadrinar { height: auto; min-height: 100vh; min-height: 100svh; }
+
+/* Certificado: se ve en pantalla y se imprime solo */
+.certificado { min-width: 0; border: 1px solid color-mix(in oklab, var(--ink) 15%, transparent); border-radius: var(--r-lg); padding: var(--s-7); display: grid; gap: var(--s-6); max-width: 1040px; margin-bottom: var(--s-6); background: var(--bg); }
+.certificado__sello { display: flex; align-items: center; gap: var(--s-3); font-size: var(--t-small); font-weight: 500; }
+.certificado__cuerpo { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: var(--s-7); align-items: start; }
+.certificado__cuerpo > div { min-width: 0; }
+.certificado__nombre, .certificado__texto, .certificado__firma dd, .ficha-datos dd { overflow-wrap: anywhere; }
+.certificado__foto { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--r-md); }
+.certificado__nombre { font: var(--display-weight) var(--t-h2)/1.05 var(--font-display); letter-spacing: var(--display-tracking); }
+.certificado__anilla { color: var(--muted); margin-top: var(--s-2); }
+.certificado__texto { margin-top: var(--s-5); max-width: 52ch; }
+.certificado__firma { display: flex; flex-wrap: wrap; gap: var(--s-5) var(--s-8); margin-top: var(--s-6); }
+.certificado__firma dt { font-size: var(--t-label); color: var(--muted); }
+.certificado__firma dd { margin: 2px 0 0; font-weight: 500; }
+.certificado__aviso { font-size: var(--t-label); color: var(--muted); }
+@media (max-width: 639px) { .certificado { padding: var(--s-5); } .certificado__cuerpo { grid-template-columns: minmax(0, 1fr); } }
+
+@media print {
+  @page { size: A4 landscape; margin: 14mm; }
+  header.nav, .hero, footer, .no-imprimir, .actionbar { display: none !important; }
+  main > section#apadrinar { height: auto !important; padding: 0 !important; }
+  .certificado { border: 1px solid #111; margin: 0; max-width: none; break-inside: avoid; }
+  .certificado__foto { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
+/* Pantallas muy estrechas: el botón grande del cierre no se sale */
+@media (max-width: 360px) { .closing .btn--xl { font-size: var(--t-lead); padding-inline: var(--s-4); } }
+
+/* Tableta: los enlaces sueltos y los del pie llegan a 44px de alto para el dedo */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .footer ul { gap: 0; }
+  .footer ul a, .footer .credits, .footer .nav__logo, a.link { display: inline-flex; align-items: center; min-height: 44px; }
+}
+
+/* ==========================================================================
+   Secciones compactas
+   El kit hace cada sección exactamente una o dos pantallas de alto. Aquí cada
+   sección mide lo que mide su contenido, con un margen fijo arriba y abajo.
+   La portada (.hero) sigue ocupando la primera pantalla, y los momentos de
+   scroll (pinned-chapters, photo-chapters) mantienen su altura mientras
+   están activos (.is-live), porque la necesitan para funcionar.
+   ========================================================================== */
+:root { --sec-pad: 88px; }
+@media (max-width: 1023px) { :root { --sec-pad: 72px; } }
+@media (max-width: 639px)  { :root { --sec-pad: 56px; } }
+
+main > :is(section, .section):not(.hero, .is-live),
+footer.closing {
+  height: auto !important;
+  min-height: 0 !important;
+  padding-top: var(--sec-pad);
+  padding-bottom: calc(var(--sec-pad) + var(--bar, 0px));
+}
+main > :is(section, .section):not(.hero, .is-live) > :is(.wrap, .container),
+footer.closing > .wrap { height: auto; }
+
+/* Secciones en dos grupos (.g2): los grupos van seguidos, sin saltar de pantalla */
+main > :is(section, .section).g2:not(.is-live) > :is(.wrap, .container),
+footer.closing.g2 > .wrap {
+  display: flex; flex-direction: column; grid-template-rows: none; row-gap: var(--s-8);
+}
+
+/* Bloques que llenaban "lo que quedaba de pantalla": ahora toman su propia altura */
+main > :is(section, .section):not(.hero) > .wrap > .fill { flex: none; }
+
+/* Dos secciones seguidas sobre el mismo fondo comparten el margen: no se suma dos veces */
+main > :is(section, .section):not(.hero, [class*="ground-"]) + :is(section, .section):not([class*="ground-"], .is-live) { padding-top: calc(var(--sec-pad) * .5); }
+
+/* El pie: la llamada final y los enlaces, juntos */
+footer.closing > .wrap { display: flex; flex-direction: column; row-gap: var(--s-9); }

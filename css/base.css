@@ -1,0 +1,324 @@
+/* ==========================================================================
+   Santuario Crozet — base.css
+   Tokens, tipografia y estructura. Todo color, tamano y espaciado se define
+   aqui. Ninguna regla de componentes.css escribe un color a mano.
+
+   Paleta de cinco colores:
+   Navy #2F4156 · Teal #567C8D · Sky Blue #C8D9E6 · Beige #F5EFEB · White #FFF
+   ========================================================================== */
+
+:root {
+  /* Color -------------------------------------------------------------- */
+  --navy:   #2f4156;
+  --teal:   #567c8d;
+  --cielo:  #c8d9e6;
+  --beige:  #f5efeb;
+  --blanco: #ffffff;
+
+  /* Derivados, siempre de los cinco de arriba */
+  --navy-oscuro:  #223243;
+  --navy-suave:   #45596e;
+  --teal-claro:   #7d9eac;
+  --cielo-suave:  #e0eaf1;
+  --beige-hondo:  #ebe2dc;
+
+  /* Papeles de uso */
+  --tinta:        var(--navy);
+  --tinta-suave:  var(--navy-suave);
+  --niebla:       var(--teal-claro);
+  --linea:        var(--cielo);
+  --papel:        var(--blanco);
+  --papel-calido: var(--beige);
+
+  /* Zonas del mapa: solo colores de la paleta, y nunca el color es la unica
+     senal: cada zona lleva siempre su etiqueta de texto. */
+  --zona-1: var(--teal);
+  --zona-2: var(--navy);
+  --zona-3: var(--cielo);
+
+  /* Tipografia --------------------------------------------------------- */
+  --fuente: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+            "Helvetica Neue", Arial, sans-serif;
+  --fuente-titulo: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia,
+                   "Times New Roman", serif;
+
+  --t-xs:   0.875rem;
+  --t-s:    1rem;
+  --t-base: 1.125rem;   /* 18px, minimo para parrafo: restriccion proyector */
+  --t-m:    1.375rem;
+  --t-l:    2rem;
+  --t-xl:   3rem;
+  --t-xxl:  4.25rem;
+
+  /* Espaciado ---------------------------------------------------------- */
+  --e-1: 0.5rem;
+  --e-2: 1rem;
+  --e-3: 1.5rem;
+  --e-4: 2rem;
+  --e-5: 3rem;
+  --e-6: 4.5rem;
+  --e-7: 7rem;
+
+  --ancho: 1180px;
+  --ancho-texto: 60ch;
+
+  --radio:   14px;
+  --radio-s: 8px;
+  --pildora: 999px;
+
+  --sombra:      0 2px 10px rgba(47, 65, 86, 0.07), 0 14px 36px rgba(47, 65, 86, 0.08);
+  --sombra-alta: 0 10px 22px rgba(47, 65, 86, 0.10), 0 28px 64px rgba(47, 65, 86, 0.14);
+
+  --curva: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* Reset --------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+body, h1, h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd { margin: 0; padding: 0; }
+
+ul, ol { list-style: none; }
+img, svg { max-width: 100%; display: block; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--fuente);
+  font-size: var(--t-base);
+  line-height: 1.7;
+  color: var(--tinta);
+  background: var(--papel);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Tipografia ----------------------------------------------------------- */
+h1, h2, h3 {
+  font-family: var(--fuente-titulo);
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+h1 { font-size: var(--t-xl); }
+h2 { font-size: var(--t-l); }
+h3 { font-size: var(--t-m); }
+
+p + p { margin-top: var(--e-2); }
+
+a { color: var(--teal); transition: color 0.2s var(--curva); }
+a:hover { color: var(--navy); }
+
+strong { font-weight: 700; }
+
+.prosa { max-width: var(--ancho-texto); }
+
+/* La rayita de la referencia, encima de cada titular */
+.raya {
+  display: block;
+  width: 34px;
+  height: 2px;
+  background: var(--teal);
+  margin-bottom: var(--e-3);
+}
+
+.etiqueta {
+  display: block;
+  font-size: var(--t-xs);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: var(--e-2);
+}
+
+.destacado { font-size: var(--t-m); color: var(--tinta-suave); line-height: 1.55; }
+
+/* Estructura ----------------------------------------------------------- */
+.contenedor {
+  width: 100%;
+  max-width: var(--ancho);
+  margin: 0 auto;
+  padding: 0 var(--e-3);
+  position: relative;
+}
+
+.seccion { padding: var(--e-6) 0; position: relative; }
+.seccion--beige { background: var(--papel-calido); }
+.seccion--cielo { background: var(--cielo-suave); }
+.seccion--navy { background: var(--navy); color: var(--cielo); }
+.seccion--navy h2, .seccion--navy h3 { color: var(--blanco); }
+.seccion--navy .destacado { color: var(--cielo); }
+.seccion--navy .etiqueta { color: var(--cielo); }
+.seccion--navy .raya { background: var(--cielo); }
+
+.seccion__cabecera { max-width: var(--ancho-texto); margin-bottom: var(--e-5); }
+.seccion__cabecera h2 { margin-bottom: var(--e-2); }
+
+/* Mancha de acuarela de fondo, como en la referencia */
+.mancha {
+  position: absolute;
+  border-radius: 48% 52% 60% 40% / 55% 45% 55% 45%;
+  background: var(--cielo);
+  opacity: 0.4;
+  filter: blur(14px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.seccion > .contenedor { z-index: 1; }
+
+/* Cabecera del sitio ---------------------------------------------------- */
+.cabecera {
+  background: rgba(255, 255, 255, 0.93);
+  backdrop-filter: saturate(140%) blur(8px);
+  -webkit-backdrop-filter: saturate(140%) blur(8px);
+  border-bottom: 1px solid var(--linea);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  transition: box-shadow 0.3s var(--curva);
+}
+
+.cabecera--fija { box-shadow: var(--sombra); }
+
+.cabecera__fila {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--e-3);
+  min-height: 80px;
+  flex-wrap: wrap;
+}
+
+.marca { display: flex; align-items: center; gap: var(--e-2); text-decoration: none; color: var(--navy); }
+.marca:hover { color: var(--navy); }
+
+.marca__icono {
+  width: 42px;
+  height: 42px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--blanco);
+  display: grid;
+  place-items: center;
+  transition: transform 0.4s var(--curva), background-color 0.3s var(--curva);
+}
+
+.marca:hover .marca__icono { transform: rotate(-12deg) scale(1.06); background: var(--teal); }
+
+.marca__texto { display: flex; flex-direction: column; line-height: 1.15; }
+.marca__nombre { font-family: var(--fuente-titulo); font-weight: 600; font-size: var(--t-m); letter-spacing: -0.01em; }
+.marca__sub { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--teal); }
+
+.nav { display: flex; align-items: center; gap: var(--e-3); flex-wrap: wrap; }
+
+.nav a {
+  text-decoration: none;
+  color: var(--tinta-suave);
+  font-size: var(--t-s);
+  font-weight: 600;
+  padding: var(--e-1) 0;
+  position: relative;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 100%; bottom: 0;
+  height: 2px;
+  background: var(--teal);
+  transition: right 0.3s var(--curva);
+}
+
+.nav a:hover { color: var(--navy); }
+.nav a:hover::after { right: 0; }
+.nav a[aria-current="page"] { color: var(--navy); }
+.nav a[aria-current="page"]::after { right: 0; }
+.nav .boton::after { display: none; }
+
+/* Pie ------------------------------------------------------------------ */
+.pie {
+  background: var(--navy);
+  color: var(--cielo);
+  padding: var(--e-6) 0 var(--e-4);
+  font-size: var(--t-s);
+  position: relative;
+}
+
+.pie a { color: var(--blanco); text-decoration: none; }
+.pie a:hover { color: var(--cielo); }
+.pie .marca, .pie .marca__nombre, .pie strong { color: var(--blanco); }
+.pie .marca__icono { background: var(--teal); }
+.pie .marca__sub { color: var(--cielo); }
+
+.pie__rejilla { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: var(--e-4); margin-bottom: var(--e-5); }
+.pie__enlaces li { margin-bottom: var(--e-1); }
+
+.pie__titulo {
+  font-size: var(--t-xs);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--teal-claro);
+  margin-bottom: var(--e-2);
+}
+
+.pie__aviso {
+  border-top: 1px solid rgba(200, 217, 230, 0.22);
+  padding-top: var(--e-3);
+  font-size: var(--t-xs);
+  line-height: 1.6;
+  color: var(--teal-claro);
+}
+
+.pie__aviso strong { color: var(--cielo); }
+
+/* Utilidades ----------------------------------------------------------- */
+.oculto { display: none !important; }
+
+.salta-a-contenido {
+  position: absolute;
+  left: -9999px;
+  background: var(--navy);
+  color: var(--blanco);
+  padding: var(--e-2);
+  border-radius: var(--radio-s);
+}
+.salta-a-contenido:focus { left: var(--e-2); top: var(--e-2); z-index: 100; }
+
+:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+
+/* Animaciones de entrada -------------------------------------------------
+   Solo se activan si el JavaScript ha corrido (clase .js en <html>). Sin JS
+   el contenido se ve siempre: nunca se esconde nada de forma permanente. */
+.js .revelar {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.75s var(--curva), transform 0.75s var(--curva);
+  transition-delay: var(--retraso, 0ms);
+}
+
+.js .revelar.visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .revelar { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Responsive ------------------------------------------------------------ */
+@media (max-width: 900px) {
+  :root { --t-xxl: 2.75rem; --t-xl: 2.125rem; --t-l: 1.625rem; --e-6: 3.5rem; --e-7: 4.5rem; }
+}
+
+@media (max-width: 720px) {
+  .cabecera__fila { min-height: 0; padding: var(--e-2) 0; }
+  .nav { gap: var(--e-2); }
+  .pie__rejilla { grid-template-columns: 1fr; }
+}

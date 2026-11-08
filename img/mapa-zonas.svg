@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 640" role="img" aria-labelledby="t d">
+  <title id="t">Mapa de las tres zonas de la Isla Alfred Faure</title>
+  <desc id="d">La reserva ocupa toda la costa; el campus de inteligencia artificial, un valle del interior; el parque eólico, las crestas del norte, junto al Pic du Mascarin.</desc>
+  <rect width="800" height="640" fill="#eef2fb"/>
+  <!-- mar: lineas de oleaje -->
+  <g fill="none" stroke="#1a4be0" stroke-opacity=".12" stroke-width="1.5">
+    <path d="M0 60 Q100 40 200 60 T400 60 T600 60 T800 60"/>
+    <path d="M0 590 Q100 570 200 590 T400 590 T600 590 T800 590"/>
+    <path d="M0 610 Q100 590 200 610 T400 610 T600 610 T800 610"/>
+  </g>
+  <!-- isla: zona 1, reserva -->
+  <path d="M150 140 C210 90 330 100 410 110 C500 120 580 100 620 150 C650 190 700 210 735 250 C770 290 760 340 720 380 C680 420 650 450 610 480 C560 515 520 550 450 560 C380 572 300 560 240 530 C180 500 120 470 95 410 C75 360 110 320 95 270 C80 220 100 180 150 140 Z" fill="#c9d6f2" stroke="#111111" stroke-width="3"/>
+  <!-- curvas de nivel -->
+  <g fill="none" stroke="#111111" stroke-opacity=".18" stroke-width="1.4">
+    <path d="M185 175 C240 140 340 145 410 152 C490 160 560 150 590 185 C620 220 670 240 690 275 C710 310 690 345 655 375 C620 405 585 430 550 455 C505 485 465 505 410 512 C350 520 290 508 245 485 C195 460 155 435 140 390 C128 350 155 320 145 280 C135 235 150 200 185 175 Z"/>
+    <path d="M225 215 C275 190 345 192 410 198 C475 205 530 200 555 225 C580 250 615 268 630 295 C645 322 628 348 600 372 C570 398 540 418 505 438 C470 458 435 470 395 474 C345 478 300 468 265 450 C228 430 200 410 192 375 C185 345 205 320 198 290 C190 255 200 235 225 215 Z"/>
+  </g>
+  <!-- zona 3: parque eolico -->
+  <path d="M330 220 C370 200 470 205 520 215 C560 223 575 245 545 260 C505 278 420 282 370 274 C330 268 300 245 330 220 Z" fill="#1a4be0"/>
+  <g stroke="#ffffff" stroke-width="3" stroke-linecap="round">
+    <path d="M370 262 V236 M370 236 l-10 -8 M370 236 l12 -4 M370 236 l-2 13"/>
+    <path d="M415 266 V240 M415 240 l-10 -8 M415 240 l12 -4 M415 240 l-2 13"/>
+    <path d="M460 264 V238 M460 238 l-10 -8 M460 238 l12 -4 M460 238 l-2 13"/>
+    <path d="M505 256 V230 M505 230 l-10 -8 M505 230 l12 -4 M505 230 l-2 13"/>
+  </g>
+  <!-- cumbre -->
+  <path d="M556 300 l14 -24 l14 24 Z" fill="#111111"/>
+  <text x="592" y="298" font-family="Schibsted Grotesk, system-ui, sans-serif" font-size="17" font-weight="500" fill="#111111">Pic du Mascarin, 934 m</text>
+  <!-- zona 2: campus -->
+  <path d="M290 330 C320 300 410 300 450 320 C490 340 495 380 470 410 C440 445 370 452 320 435 C275 420 260 365 290 330 Z" fill="#111111"/>
+  <g fill="#ffffff">
+    <rect x="315" y="345" width="26" height="10" rx="3"/><rect x="350" y="345" width="26" height="10" rx="3"/><rect x="385" y="345" width="26" height="10" rx="3"/><rect x="420" y="345" width="26" height="10" rx="3"/>
+    <rect x="315" y="368" width="26" height="10" rx="3"/><rect x="350" y="368" width="26" height="10" rx="3"/><rect x="385" y="368" width="26" height="10" rx="3"/><rect x="420" y="368" width="26" height="10" rx="3"/>
+    <rect x="330" y="391" width="26" height="10" rx="3"/><rect x="365" y="391" width="26" height="10" rx="3"/><rect x="400" y="391" width="26" height="10" rx="3"/>
+  </g>
+  <!-- colonias en la costa -->
+  <g fill="#111111">
+    <circle cx="160" cy="160" r="6"/><circle cx="300" cy="112" r="6"/><circle cx="470" cy="118" r="6"/><circle cx="640" cy="175" r="6"/>
+    <circle cx="740" cy="300" r="6"/><circle cx="660" cy="440" r="6"/><circle cx="520" cy="548" r="6"/><circle cx="340" cy="562" r="6"/>
+    <circle cx="190" cy="500" r="6"/><circle cx="96" cy="380" r="6"/><circle cx="98" cy="250" r="6"/>
+  </g>
+  <!-- rotulos: el color nunca es la unica senal -->
+  <g font-family="Schibsted Grotesk, system-ui, sans-serif" font-size="20" font-weight="500">
+    <text x="130" y="600" fill="#111111">1 · Reserva, toda la costa</text>
+    <text x="300" y="192" fill="#1a4be0">3 · Parque eólico</text>
+    <text x="300" y="478" fill="#111111">2 · Campus de IA</text>
+  </g>
+</svg>
