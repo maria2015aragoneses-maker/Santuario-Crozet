@@ -168,3 +168,21 @@ main > :is(section, .section):not(.hero, [class*="ground-"]) + :is(section, .sec
 
 /* El pie: la llamada final y los enlaces, juntos */
 footer.closing > .wrap { display: flex; flex-direction: column; row-gap: var(--s-9); }
+
+/* Vídeo de la portada: se reproduce al pulsar, con sonido */
+.video-marco { position: relative; margin: 0; border-radius: var(--r-lg); overflow: hidden; background: var(--p-inv-bg); aspect-ratio: 16 / 9; }
+.video-marco > video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.video-marco__play {
+  position: absolute; inset: 0; margin: auto; width: 96px; height: 96px; border: 0; border-radius: 50%;
+  display: grid; place-items: center; cursor: pointer;
+  background: var(--action); color: var(--p-action-ink);
+  box-shadow: 0 8px 32px rgb(0 0 0 / .25);
+  transition: transform 200ms var(--ease), background-color 200ms var(--ease);
+}
+.video-marco__play svg { width: 40px; height: 40px; margin-left: 4px; }
+@media (hover: hover) and (pointer: fine) { .video-marco__play:hover { transform: scale(1.06); } }
+.video-marco__play:active { transform: scale(.96); }
+.video-marco__play:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+.video-marco.is-playing .video-marco__play { opacity: 0; pointer-events: none; }
+@media (prefers-reduced-motion: reduce) { .video-marco__play { transition: none; } }
+@media (max-width: 639px) { .video-marco__play { width: 72px; height: 72px; } .video-marco__play svg { width: 30px; height: 30px; } }
