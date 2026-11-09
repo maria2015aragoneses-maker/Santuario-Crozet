@@ -107,7 +107,7 @@ main > section#apadrinar { height: auto; min-height: 100vh; min-height: 100svh; 
 .certificado__nombre, .certificado__texto, .certificado__firma dd, .ficha-datos dd { overflow-wrap: anywhere; }
 .certificado__foto { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--r-md); }
 .certificado__nombre { font: var(--display-weight) var(--t-h2)/1.05 var(--font-display); letter-spacing: var(--display-tracking); }
-.certificado__anilla { color: var(--muted); margin-top: var(--s-2); }
+.certificado__codigo { color: var(--muted); margin-top: var(--s-2); }
 .certificado__texto { margin-top: var(--s-5); max-width: 52ch; }
 .certificado__firma { display: flex; flex-wrap: wrap; gap: var(--s-5) var(--s-8); margin-top: var(--s-6); }
 .certificado__firma dt { font-size: var(--t-label); color: var(--muted); }

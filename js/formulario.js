@@ -97,16 +97,15 @@
     var foto = document.getElementById('cert-foto');
     conFotoSegura(foto);
     foto.src = pinguinoActual.foto;
-    foto.alt = pinguinoActual.especie + ' con anilla ' + pinguinoActual.anilla;
+    foto.alt = pinguinoActual.especie + ' con el código de seguimiento ' + pinguinoActual.codigo;
 
     document.getElementById('cert-nombre').textContent = datos.nombrePinguino;
-    document.getElementById('cert-anilla').textContent =
-      pinguinoActual.especie + ' · anilla ' + pinguinoActual.anilla;
+    document.getElementById('cert-codigo').textContent =
+      pinguinoActual.especie + ' · código ' + pinguinoActual.codigo;
 
     document.getElementById('cert-texto').textContent =
       datos.nombrePadrino + ' apadrina a ' + datos.nombrePinguino +
-      ', de la colonia de ' + pinguinoActual.colonia +
-      ', y contribuye con ' + datos.cuota +
+      ' y contribuye con ' + datos.cuota +
       ' € a su seguimiento científico en la reserva de la Isla Alfred Faure.';
 
     document.getElementById('cert-fecha').textContent = fechaDeHoy();

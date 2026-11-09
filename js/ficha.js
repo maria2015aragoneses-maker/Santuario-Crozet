@@ -1,6 +1,6 @@
 /* ==========================================================================
    Santuario Crozet — ficha.js
-   Lee la anilla del parametro ?id= de la direccion y rellena la ficha.
+   Lee el código del parametro ?id= de la direccion y rellena la ficha.
    Una sola plantilla (ficha.html) sirve para los ocho pinguinos, y cada uno
    conserva su propia direccion: es lo que permite que el QR del poster
    apunte a un animal concreto.
@@ -9,7 +9,7 @@
 (function () {
   'use strict';
 
-  function anillaDeLaUrl() {
+  function codigoDeLaUrl() {
     var busqueda = window.location.search || '';
     var partes = busqueda.replace(/^\?/, '').split('&');
 
@@ -39,7 +39,7 @@
     var form = document.getElementById('apadrinar');
     document.getElementById('ficha-titulo').textContent = 'Pingüino';
     document.getElementById('ficha-sinnombre').textContent = 'no encontrado';
-    document.getElementById('ficha-nota').textContent = 'Esa anilla no está en la reserva. Elige uno de los ocho pingüinos del listado.';
+    document.getElementById('ficha-nota').textContent = 'Ese código no está en la reserva. Elige uno de los ocho pingüinos del listado.';
     if (aviso) { aviso.hidden = false; }
     if (form) { form.hidden = true; }
     var botones = document.querySelectorAll('[data-accion-principal]');
@@ -48,8 +48,8 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    var anilla = anillaDeLaUrl() || 'K-0427';
-    var pinguino = buscarPinguino(anilla);
+    var codigo = codigoDeLaUrl() || 'K-0427';
+    var pinguino = buscarPinguino(codigo);
 
     if (!pinguino) {
       mostrarNoEncontrado();
@@ -57,32 +57,30 @@
     }
 
     var apadrinado = pinguino.estado === 'apadrinado';
-    document.title = pinguino.anilla + ', ' + pinguino.especie.toLowerCase() + ': Santuario Crozet';
+    document.title = pinguino.codigo + ', ' + pinguino.especie.toLowerCase() + ': Santuario Crozet';
 
     var img = document.getElementById('ficha-foto');
     conFotoSegura(img);
     img.src = pinguino.foto;
-    img.alt = pinguino.especie + ' con la anilla ' + pinguino.anilla;
+    img.alt = pinguino.especie + ' con el código de seguimiento ' + pinguino.codigo;
 
     var kicker = document.getElementById('ficha-especie');
-    kicker.lastChild.textContent = pinguino.cientifico + ' · ' + pinguino.colonia;
-    /* La anilla nunca se parte por el guion al cambiar de línea. */
+    kicker.lastChild.textContent = pinguino.cientifico;
+    /* El código nunca se parte por el guion al cambiar de línea. */
     var titulo = document.getElementById('ficha-titulo');
     titulo.textContent = pinguino.especie + ' ';
-    var anillaTitulo = document.createElement('span');
-    anillaTitulo.style.whiteSpace = 'nowrap';
-    anillaTitulo.textContent = pinguino.anilla;
-    titulo.appendChild(anillaTitulo);
+    var codigoTitulo = document.createElement('span');
+    codigoTitulo.style.whiteSpace = 'nowrap';
+    codigoTitulo.textContent = pinguino.codigo;
+    titulo.appendChild(codigoTitulo);
     document.getElementById('ficha-sinnombre').textContent = apadrinado ? 'ya tiene padrino' : 'sin nombre';
     document.getElementById('ficha-nota').textContent = pinguino.nota;
 
-    var marcas = document.querySelectorAll('[data-anilla]');
-    for (var i = 0; i < marcas.length; i++) { marcas[i].textContent = pinguino.anilla; }
+    var marcas = document.querySelectorAll('[data-codigo]');
+    for (var i = 0; i < marcas.length; i++) { marcas[i].textContent = pinguino.codigo; }
 
     var datos = document.getElementById('ficha-datos');
-    datos.appendChild(fila('Colonia', pinguino.colonia));
     datos.appendChild(fila('Seguido desde', String(pinguino.desde)));
-    datos.appendChild(fila('Último avistamiento', pinguino.avistamiento));
     datos.appendChild(fila('Investigador', pinguino.investigador));
 
     if (apadrinado) {

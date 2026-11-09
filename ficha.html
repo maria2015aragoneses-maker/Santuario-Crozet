@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Ficha de seguimiento: un pingüino anillado del Santuario Crozet</title>
-<meta name="description" content="Anilla, colonia, último avistamiento e investigador de un pingüino de la Isla Alfred Faure, con el formulario para apadrinarlo.">
+<title>Ficha de seguimiento: un pingüino del Santuario Crozet</title>
+<meta name="description" content="Código de seguimiento, año de seguimiento e investigador de un pingüino de la Isla Alfred Faure, con el formulario para apadrinarlo.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Ficha de seguimiento: un pingüino anillado del Santuario Crozet">
+<meta property="og:title" content="Ficha de seguimiento: un pingüino del Santuario Crozet">
 <meta property="og:description" content="Apadrina este pingüino de la Isla Alfred Faure y ponle nombre.">
 <meta property="og:image" content="share.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -35,7 +35,7 @@
 </head>
 <body>
 <!-- type: service (site-kind other) · deal as index.html: hero split, nav-split, close-type, footer-dark, buttons block, mark ring.
-     Una sola plantilla para los ocho pingüinos: ficha.js la rellena según ?id=<anilla>. -->
+     Una sola plantilla para los ocho pingüinos: ficha.js la rellena según ?id=<código>. -->
 
 <header class="nav nav--split">
   <div class="wrap nav__bar">
@@ -61,9 +61,9 @@
   <section class="hero hero--split" data-enter aria-labelledby="hero-h">
     <div class="wrap"><div class="hero-text grid hero__grid">
       <div class="hero__text span-5">
-        <p class="hero__kicker" id="ficha-especie"><span class="dot" aria-hidden="true"></span>Aptenodytes patagonicus · Baie du Marin</p>
+        <p class="hero__kicker" id="ficha-especie"><span class="dot" aria-hidden="true"></span>Aptenodytes patagonicus</p>
         <h1 id="hero-h"><span id="ficha-titulo">Pingüino rey K-0427</span>, <span class="muted" id="ficha-sinnombre">sin nombre</span></h1>
-        <p class="hero__lead" id="ficha-nota">Ficha de seguimiento de un pingüino anillado de la reserva.</p>
+        <p class="hero__lead" id="ficha-nota">Ficha de seguimiento de un pingüino de la reserva.</p>
         <dl class="ficha-datos" id="ficha-datos"></dl>
         <div class="btn-row">
           <a class="btn btn--primary" href="#apadrinar" data-accion-principal>Apadrina este pingüino<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
@@ -71,7 +71,7 @@
         <p class="ficha-volver"><a class="link" href="apadrina.html">Ver los ocho pingüinos</a></p>
       </div>
       <div class="hero__media span-6 start-7">
-        <img id="ficha-foto" src="img/pendiente.svg" alt="Pingüino anillado de la reserva" fetchpriority="high" data-source="library" data-subject="pingüino">
+        <img id="ficha-foto" src="img/pendiente.svg" alt="Pingüino de la reserva" fetchpriority="high" data-source="library" data-subject="pingüino">
       </div>
     </div></div>
     <p class="wrap no-encontrado" id="no-encontrado" hidden>No encontramos ese pingüino. <a class="link" href="apadrina.html">Elige uno de los ocho</a>.</p>
@@ -81,7 +81,7 @@
     <div class="wrap">
       <div id="bloque-formulario">
         <div class="section-head">
-          <h2 id="apadrinar-h">Apadrina a <span data-anilla>este pingüino</span></h2>
+          <h2 id="apadrinar-h">Apadrina a <span data-codigo>este pingüino</span></h2>
           <p>Pago único, una sola vez. Es una simulación: no se pide ningún dato bancario y no se cobra nada.</p>
         </div>
 
@@ -95,7 +95,7 @@
               <p class="field__error" id="error-email" hidden></p></div>
             <div class="field"><label for="nombre-pinguino">El nombre que le pones</label>
               <input id="nombre-pinguino" name="nombre-pinguino" type="text" maxlength="30" autocomplete="off" aria-describedby="ayuda-nombre error-nombre-pinguino">
-              <p class="t-small muted" id="ayuda-nombre">Sale en el certificado junto a su anilla.</p>
+              <p class="t-small muted" id="ayuda-nombre">Sale en el certificado junto a su código de seguimiento.</p>
               <p class="field__error" id="error-nombre-pinguino" hidden></p></div>
           </div>
 
@@ -123,7 +123,7 @@
             <img class="certificado__foto" id="cert-foto" src="img/pendiente.svg" alt="">
             <div>
               <p class="certificado__nombre" id="cert-nombre"></p>
-              <p class="certificado__anilla" id="cert-anilla"></p>
+              <p class="certificado__codigo" id="cert-codigo"></p>
               <p class="certificado__texto" id="cert-texto"></p>
               <dl class="certificado__firma">
                 <div><dt>Fecha</dt><dd id="cert-fecha"></dd></div>
@@ -148,7 +148,7 @@
     <div class="closing__cta close--type">
       <div class="section-head">
         <h2 id="close-h">Ponle nombre a este pingüino</h2>
-        <p class="t-lead">Pago único de 15, 30 o 60 €. Recibes un certificado con su anilla y el nombre que elijas.</p>
+        <p class="t-lead">Pago único de 15, 30 o 60 €. Recibes un certificado con su código de seguimiento y el nombre que elijas.</p>
       </div>
       <a class="btn btn--primary btn--xl btn--wide" href="#apadrinar" data-accion-principal>Apadrina este pingüino<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
     </div>

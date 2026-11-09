@@ -48,7 +48,7 @@ Name "Santuario Crozet", subtitle "Isla Alfred Faure". Voice: scientific and edi
 
 ## Evidence on Hand
 
-- Key figures: 150 km², 3,5 °C mean annual temperature, 80 MW wind (20 turbines × 4 MW, 200 MWh batteries), 0 litres of water for cooling, 2 km exclusion perimeter around colonies; coordinates 46°24′S 51°46′E.
+- Key figures: 150 km², 3,5 °C mean annual temperature, 100 MW wind (25 turbines × 4 MW, 200 MWh batteries), 0 litres of water for cooling, 2 km exclusion perimeter around colonies; coordinates 46°24′S 51°46′E.
 - Zones: 1 Reserva natural y científica 97,5 km² (65 %); 2 Campus de IA 37,5 km² (25 %); 3 Parque eólico y micro-red 15 km² (10 %).
 - Eight invented penguins in `js/datos.js` (six king, two gentoo), invented researchers and colonies.
 - Fauna: pingüino rey, pingüino papúa, albatros errante, elefante marino del sur, foca peletera.

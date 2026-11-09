@@ -10,21 +10,21 @@
 
   var filtroActivo = 'todos';
 
-  /* Una tarjeta del kit (.tile): foto 4:5, anilla y estado en la cabecera,
-     especie y colonia debajo. Un pingüino ya apadrinado no es enlace. */
+  /* Una tarjeta del kit (.tile): foto 4:5, código y estado en la cabecera,
+     especie debajo. Un pingüino ya apadrinado no es enlace. */
   function crearTarjeta(p, columnas) {
     var apadrinado = p.estado === 'apadrinado';
 
     var tarjeta = document.createElement(apadrinado ? 'div' : 'a');
     tarjeta.className = 'tile tile--portrait ' + columnas + (apadrinado ? ' tile--apadrinado' : '');
     if (!apadrinado) {
-      tarjeta.href = 'ficha.html?id=' + encodeURIComponent(p.anilla);
+      tarjeta.href = 'ficha.html?id=' + encodeURIComponent(p.codigo);
     }
 
     var marco = document.createElement('div');
     marco.className = 'tile__media';
     var img = document.createElement('img');
-    img.alt = p.especie + ' con la anilla ' + p.anilla;
+    img.alt = p.especie + ' con el código de seguimiento ' + p.codigo;
     img.loading = 'lazy';
     conFotoSegura(img);
     img.src = p.foto;
@@ -33,7 +33,7 @@
     var cabecera = document.createElement('div');
     cabecera.className = 'tile__head';
     var titulo = document.createElement('h3');
-    titulo.textContent = p.anilla;
+    titulo.textContent = p.codigo;
     var estado = document.createElement('span');
     estado.className = 'estado ' + (apadrinado ? 'estado--apadrinado' : 'estado--disponible');
     estado.textContent = apadrinado ? 'Ya tiene padrino' : 'Sin nombre';
@@ -42,7 +42,7 @@
 
     var meta = document.createElement('p');
     meta.className = 'tile__facts';
-    meta.textContent = p.especie + ' · ' + p.colonia;
+    meta.textContent = p.especie;
 
     tarjeta.appendChild(marco);
     tarjeta.appendChild(cabecera);
